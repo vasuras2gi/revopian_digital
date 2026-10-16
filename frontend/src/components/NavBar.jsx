@@ -10,8 +10,8 @@ const NavBar = () => {
       label: 'About', 
       href: '/about-us', // Default link for parent
       subItems: [
-        { label: 'Our Team', href: '/our-team' },
         { label: 'About Us', href: '/about-us' },
+        { label: 'Our Team', href: '/our-team' },
         { label: 'Franchise', href: '/franchise' },
         { label: 'Placement & Records', href: '/placement-records' },
         { 

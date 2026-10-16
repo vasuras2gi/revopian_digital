@@ -57,7 +57,7 @@ export const PremiumScroller = () => {
   useEffect(() => {
     const slideTimer = setInterval(() => {
       nextSlide();
-    }, 5000); // 5000ms = 5 seconds me slide change hogi
+    }, 2000); // 5000ms = 5 seconds me slide change hogi
 
     // Cleanup: Jab user manual click karega (currentIndex change hoga), 
     // toh purana timer clear hokar naya shuru ho jayega taaki overlapping na ho.

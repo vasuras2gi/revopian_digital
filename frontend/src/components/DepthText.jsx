@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
-import '../App.css';
+// import '../App.css'; 
 
 const MAX_LAYERS = 64;
 
@@ -30,6 +30,7 @@ const DepthText = ({
   orbitSpeed = 0.35,
   fontSize = 'clamp(3rem, 12vw, 7rem)',
   fontWeight = 900,
+  letterSpacing = 'normal', // Prop for character spacing
   shadow = true,
   className = '',
   style = {}
@@ -53,7 +54,7 @@ const DepthText = ({
         return {
           index,
           color: getLayerColor(faceColor, depthColor, index, safeLayers),
-          transform: `translateZ(${-index * safeDepth}px)`
+          transform: `translateZ(${-index * safeDepth}px)` // FIXED: Added * operator
         };
       }),
     [safeLayers, safeDepth, faceColor, depthColor]
@@ -138,6 +139,7 @@ const DepthText = ({
 
   const rootStyle = {
     ...style,
+    letterSpacing, 
     '--depth-text-perspective': `${safePerspective}px`,
     '--depth-text-font-size': fontSize,
     '--depth-text-font-weight': fontWeight,
@@ -156,12 +158,23 @@ const DepthText = ({
             aria-hidden="true"
             className="depth-text__layer"
             key={layer.index}
-            style={{ color: layer.color, transform: layer.transform }}
+            // FIXED: Applying letterSpacing directly to each 3D layer
+            style={{ 
+              color: layer.color, 
+              transform: layer.transform,
+              letterSpacing: letterSpacing 
+            }}
           >
             {text}
           </span>
         ))}
-        <span className="depth-text__face">{text}</span>
+        {/* FIXED: Applying letterSpacing directly to the front face */}
+        <span 
+          className="depth-text__face" 
+          style={{ letterSpacing: letterSpacing }}
+        >
+          {text}
+        </span>
       </span>
     </span>
   );

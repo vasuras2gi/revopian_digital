@@ -99,7 +99,11 @@ function App() {
 
           {/* 3D Depth Title (Now properly formatted on two lines for visual balance) */}
           <div className="gsap-hero-anim w-full pointer-events-none mb-12">
+            
             {/* Top Line */}
+            {/* ADDED: tracking-[0.08em] to add character spacing */}
+            {/* <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-2 tracking-[0.08em]"> */}
+
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-2">
               {["Revopions", "Digital"].map((word, index) => (
                 <div key={`line1-${index}`} className="pointer-events-auto">
@@ -107,29 +111,34 @@ function App() {
                     text={word}
                     layers={34}
                     depth={2.4}
-                    faceColor="#ffffff" // Crisp white face for better readability
+                    faceColor="#ffffff" 
                     depthColor="#008b8b"
+                    letterSpacing="5px"
                     tilt={7.5}
                     pointerTracking
                     smoothing={0.14}
                     perspective={900}
                     autoOrbit
                     orbitSpeed={0.35}
-                    fontSize="clamp(3.5rem, 8vw, 6.5rem)" // Properly scaled font
+                    fontSize="clamp(3.5rem, 8vw, 6.5rem)" 
                     fontWeight={900}
                     shadow
+                    // Agar DepthText component custom prop support karta hai toh aap yahan letterSpacing="0.08em" bhi pass kar sakte hain
                   />
                 </div>
               ))}
             </div>
+            
             {/* Bottom Line */}
-            <div className="flex flex-wrap justify-center pointer-events-auto">
+            {/* ADDED: tracking-[0.08em] for the Academy text */}
+            <div className="flex flex-wrap justify-center pointer-events-auto tracking-[0.08em]">
               <DepthText
                 text="Academy"
                 layers={34}
                 depth={2.4}
                 faceColor="#ffffff"
                 depthColor="#008b8b"
+                letterSpacing="5px"
                 tilt={7.5}
                 pointerTracking
                 smoothing={0.14}
