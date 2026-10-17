@@ -21,14 +21,18 @@ function App() {
       
       // HERO SECTION ENTRANCE (Smoother & Slightly Slower Stagger for Premium Feel)
       gsap.fromTo(".gsap-hero-anim", 
-        { y: 40, opacity: 0 },
+        { 
+          y: 40, 
+          autoAlpha: 0 // Better than opacity: handles visibility and opacity simultaneously
+        },
         {
           y: 0,
-          opacity: 1,
+          autoAlpha: 1,
           duration: 1.5,
-          stagger: 0.2, 
+          stagger: 0.3, 
           ease: "power4.out",
-          delay: 0.2, 
+          delay: 0.2,
+          clearProps: "all" // Removes inline styles after animation, preventing layout bugs
         }
       );
 
